@@ -191,7 +191,315 @@ export default function Portfolio() {
         className={`min-h-screen ${isDarkMode ? "bg-black" : "bg-[#FAFAFA]"} ${isDarkMode ? "text-white" : "text-[#333]"} relative overflow-hidden `}
       >
         {/* Continuous Animated Tech Background */}
-       
+        <div className="fixed inset-0 z-0">
+
+          {/* Large Rotating Orbital Structures */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={`orbital-${i}`}
+              className="absolute"
+              style={{
+                left: `${5 + (i % 4) * 22}%`,
+                top: `${5 + Math.floor(i / 4) * 25}%`,
+                width: "300px",
+                height: "300px",
+              }}
+              animate={{
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: 25 + i * 5,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            >
+              <svg width="300" height="300" viewBox="0 0 300 300" className="opacity-15">
+                <circle
+                  cx="150"
+                  cy="150"
+                  r="120"
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="1"
+                  strokeDasharray="8,8"
+                />
+                <circle
+                  cx="150"
+                  cy="150"
+                  r="90"
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.8"
+                  opacity="0.7"
+                />
+                <circle
+                  cx="150"
+                  cy="150"
+                  r="60"
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.6"
+                  opacity="0.5"
+                />
+                <circle
+                  cx="150"
+                  cy="150"
+                  r="30"
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.4"
+                  opacity="0.3"
+                />
+                {/* Cross lines */}
+                <line
+                  x1="150"
+                  y1="30"
+                  x2="150"
+                  y2="270"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.5"
+                  opacity="0.4"
+                />
+                <line
+                  x1="30"
+                  y1="150"
+                  x2="270"
+                  y2="150"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.5"
+                  opacity="0.4"
+                />
+                {/* Diagonal lines */}
+                <line
+                  x1="85"
+                  y1="85"
+                  x2="215"
+                  y2="215"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.3"
+                  opacity="0.3"
+                />
+                <line
+                  x1="215"
+                  y1="85"
+                  x2="85"
+                  y2="215"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.3"
+                  opacity="0.3"
+                />
+              </svg>
+            </motion.div>
+          ))}
+
+          {/* Medium Rotating Wireframes */}
+          {[...Array(16)].map((_, i) => (
+            <motion.div
+              key={`wireframe-${i}`}
+              className="absolute"
+              style={{
+                width: "120px",
+                height: "120px",
+                left: `${2 + (i % 8) * 12}%`,
+                top: `${10 + Math.floor(i / 8) * 20 + (i % 4) * 20}%`,
+              }}
+              animate={{
+                rotate: [0, -360],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 18 + i * 3,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            >
+              <svg width="120" height="120" viewBox="0 0 120 120" className="opacity-20">
+                <polygon
+                  points="60,10 100,40 100,80 60,110 20,80 20,40"
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="1"
+                />
+                <polygon
+                  points="60,25 85,42.5 85,77.5 60,95 35,77.5 35,42.5"
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.6"
+                  opacity="0.7"
+                />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="15"
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.4"
+                  opacity="0.5"
+                />
+              </svg>
+            </motion.div>
+          ))}
+
+          {/* Floating Tech Lines */}
+
+
+
+          <AnimatePresence>
+            {techLinePositions.map((pos, i) => (
+              <motion.div
+                key={`tech-line-${i}`}
+                className="absolute"
+                layout // Isso ativa transições automáticas ao mudar estilo/posição
+                initial={{ opacity: 0, scaleX: 0.8 }}
+                animate={{ opacity: 0.6, scaleX: 1 }}
+                exit={{ opacity: 0, scaleX: 0.5, transition: { duration: 3 } }}
+                style={{
+                  left: `${pos.left}%`,
+                  top: `${pos.top}%`,
+                  width: "150px",
+                  height: "2px",
+                }}
+                transition={{
+                  duration: pos.duration,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
+              />
+            ))}
+          </AnimatePresence>
+
+          {/* Circuit Network Background */}
+          <svg className="absolute inset-0 w-full h-full opacity-8">
+            {[...Array(30)].map((_, i) => {
+              const x1 = Math.random() * 100
+              const y1 = Math.random() * 100
+              const x2 = Math.random() * 100
+              const y2 = Math.random() * 100
+              return (
+                <motion.line
+                  key={`circuit-${i}`}
+                  x1={`${x1}%`}
+                  y1={`${y1}%`}
+                  x2={`${x2}%`}
+                  y2={`${y2}%`}
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.5"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 0.3 }}
+                  transition={{
+                    duration: 12 + Math.random() * 8,
+                    delay: Math.random() * 5,
+                    repeat: Number.POSITIVE_INFINITY,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                  }}
+                />
+              )
+            })}
+
+            {/* Additional Circuit Patterns */}
+            {[...Array(25)].map((_, i) => {
+              const startX = Math.random() * 100
+              const startY = Math.random() * 100
+              const endX = startX + (Math.random() - 0.5) * 40
+              const endY = startY + (Math.random() - 0.5) * 40
+              const midX = (startX + endX) / 2 + (Math.random() - 0.5) * 20
+              const midY = (startY + endY) / 2 + (Math.random() - 0.5) * 20
+
+              return (
+                <motion.path
+                  key={`circuit-pattern-${i}`}
+                  d={`M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`}
+                  fill="none"
+                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
+                  strokeWidth="0.3"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 0.2 }}
+                  transition={{
+                    duration: 15 + Math.random() * 10,
+                    delay: Math.random() * 8,
+                    repeat: Number.POSITIVE_INFINITY,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                  }}
+                />
+              )
+            })}
+          </svg>
+
+          {/* Small Rotating Geometric Elements */}
+          {[...Array(24)].map((_, i) => (
+            <motion.div
+              key={`geo-${i}`}
+              className={`absolute border ${isDarkMode ? "border-[#D62828]/25" : "border-[#2B2D42]/25"}`}
+              style={{
+                width: "40px",
+                height: "40px",
+                left: `${5 + (i % 8) * 12}%`,
+                top: `${10 + Math.floor(i / 8) * 15 + (i % 4) * 20}%`,
+              }}
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.3, 1],
+                opacity: [0.2, 0.5, 0.2],
+              }}
+              transition={{
+                duration: 15 + i * 2,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            />
+          ))}
+
+          {/* Micro Geometric Elements */}
+          {[...Array(30)].map((_, i) => (
+            <motion.div
+              key={`micro-geo-${i}`}
+              className={`absolute ${isDarkMode ? "border-[#D62828]/15" : "border-[#2B2D42]/15"}`}
+              style={{
+                width: "20px",
+                height: "20px",
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                borderRadius: i % 3 === 0 ? "50%" : "0",
+              }}
+              animate={{
+                rotate: [0, 360],
+                scale: [0.8, 1.2, 0.8],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 20 + i * 1.5,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
+            />
+          ))}
+
+          {/* Floating Connection Nodes */}
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={`node-${i}`}
+              className={`absolute w-2 h-2 rounded-full ${isDarkMode ? "bg-[#D62828]/20" : "bg-[#2B2D42]/20"}`}
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                x: [0, 50, -30, 0],
+                y: [0, -40, 60, 0],
+                scale: [1, 1.5, 1],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: 25 + Math.random() * 15,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+
         {/* Content */}
         <div className="relative z-20">
           {/* Fixed Header */}
