@@ -160,15 +160,24 @@ export default function Portfolio() {
     }
   }
 
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
+  const ORBIT_COUNT = isMobile ? 3 : 6;
+  const WIRE_COUNT = isMobile ? 4 : 8;
+  const LINE_COUNT = isMobile ? 6 : 12;
+  const CIRCUIT_COUNT = isMobile ? 5 : 10;
+  const MICRO_COUNT = isMobile ? 5 : 10;
+  const NODE_COUNT = isMobile ? 4 : 8;
+
   // Dentro do componente React:
   const techLinePositions = useMemo(() => {
-  if (!hasMounted) return [];
-  return [...Array(LINE_COUNT)].map(() => ({
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    duration: 20 + Math.random() * 15,
-  }));
-}, [hasMounted]);
+    if (!hasMounted) return [];
+    return Array.from({ length: LINE_COUNT }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      dur: 15 + Math.random() * 10,
+    }));
+  }, [hasMounted, LINE_COUNT]);
 
   return (
     <>
@@ -194,262 +203,113 @@ export default function Portfolio() {
         <div className="fixed inset-0 z-0">
 
           {/* Large Rotating Orbital Structures */}
-          {[...Array(12)].map((_, i) => (
+          {Array.from({ length: ORBIT_COUNT }).map((_, i) => (
             <motion.div
-              key={`orbital-${i}`}
-              className="absolute"
+              key={i}
+              className="absolute will-change-transform"
               style={{
-                left: `${5 + (i % 4) * 22}%`,
-                top: `${5 + Math.floor(i / 4) * 25}%`,
-                width: "300px",
-                height: "300px",
+                left: `${10 + (i % 2) * 50}%`,
+                top: `${10 + Math.floor(i / 2) * 45}%`,
+                width: isMobile ? "200px" : "300px",
+                height: isMobile ? "200px" : "300px",
               }}
-              animate={{
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 25 + i * 5,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
             >
-              <svg width="300" height="300" viewBox="0 0 300 300" className="opacity-15">
-                <circle
-                  cx="150"
-                  cy="150"
-                  r="120"
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="1"
-                  strokeDasharray="8,8"
-                />
-                <circle
-                  cx="150"
-                  cy="150"
-                  r="90"
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.8"
-                  opacity="0.7"
-                />
-                <circle
-                  cx="150"
-                  cy="150"
-                  r="60"
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.6"
-                  opacity="0.5"
-                />
-                <circle
-                  cx="150"
-                  cy="150"
-                  r="30"
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.4"
-                  opacity="0.3"
-                />
-                {/* Cross lines */}
-                <line
-                  x1="150"
-                  y1="30"
-                  x2="150"
-                  y2="270"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.5"
-                  opacity="0.4"
-                />
-                <line
-                  x1="30"
-                  y1="150"
-                  x2="270"
-                  y2="150"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.5"
-                  opacity="0.4"
-                />
-                {/* Diagonal lines */}
-                <line
-                  x1="85"
-                  y1="85"
-                  x2="215"
-                  y2="215"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.3"
-                  opacity="0.3"
-                />
-                <line
-                  x1="215"
-                  y1="85"
-                  x2="85"
-                  y2="215"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.3"
-                  opacity="0.3"
-                />
+              <svg width="100%" height="100%" viewBox="0 0 300 300" className="opacity-10">
+                <circle cx="150" cy="150" r="120" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="1" strokeDasharray="8,8" />
+                <circle cx="150" cy="150" r="90" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.6" opacity="0.6" />
               </svg>
             </motion.div>
           ))}
 
           {/* Medium Rotating Wireframes */}
-          {[...Array(16)].map((_, i) => (
-            <motion.div
-              key={`wireframe-${i}`}
-              className="absolute"
-              style={{
-                width: "120px",
-                height: "120px",
-                left: `${2 + (i % 8) * 12}%`,
-                top: `${10 + Math.floor(i / 8) * 20 + (i % 4) * 20}%`,
-              }}
-              animate={{
-                rotate: [0, -360],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 18 + i * 3,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-            >
-              <svg width="120" height="120" viewBox="0 0 120 120" className="opacity-20">
-                <polygon
-                  points="60,10 100,40 100,80 60,110 20,80 20,40"
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="1"
-                />
-                <polygon
-                  points="60,25 85,42.5 85,77.5 60,95 35,77.5 35,42.5"
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.6"
-                  opacity="0.7"
-                />
-                <circle
-                  cx="60"
-                  cy="60"
-                  r="15"
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.4"
-                  opacity="0.5"
-                />
-              </svg>
-            </motion.div>
-          ))}
+        {Array.from({ length: WIRE_COUNT }).map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute will-change-transform"
+        style={{
+          width: isMobile ? "80px" : "120px",
+          height: isMobile ? "80px" : "120px",
+          left:  `${5 + (i % 4) * 24}%`,
+          top:   `${15 + Math.floor(i/4) * 30}%`,
+        }}
+        animate={{ rotate: [0, -360], scale: [1,1.1,1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      >
+        <svg width="100%" height="100%" viewBox="0 0 120 120" className="opacity-15">
+          <polygon points="60,10 100,40 60,110 20,80 20,40" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.8"/>
+        </svg>
+      </motion.div>
+    ))}
 
           {/* Floating Tech Lines */}
-
-
-
           <AnimatePresence>
-            {techLinePositions.map((pos, i) => (
-              <motion.div
-                key={`tech-line-${i}`}
-                className="absolute"
-                layout // Isso ativa transições automáticas ao mudar estilo/posição
-                initial={{ opacity: 0, scaleX: 0.8 }}
-                animate={{ opacity: 0.6, scaleX: 1 }}
-                exit={{ opacity: 0, scaleX: 0.5, transition: { duration: 3 } }}
-                style={{
-                  left: `${pos.left}%`,
-                  top: `${pos.top}%`,
-                  width: "150px",
-                  height: "2px",
-                }}
-                transition={{
-                  duration: pos.duration,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "linear",
-                }}
-              />
-            ))}
-          </AnimatePresence>
+      {techLinePositions.map((pos, i) => (
+        <motion.div
+          key={i}
+          className="absolute will-change-transform bg-gradient-to-r from-transparent via-current to-transparent opacity-40"
+          style={{
+            left: pos.left, top: pos.top,
+            width: isMobile ? "100px" : "150px", height: "2px",
+            color: isDarkMode ? "#D62828" : "#2B2D42",
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: pos.dur, repeat: Infinity, ease: "linear" }}
+        />
+      ))}
+    </AnimatePresence>
 
-          {/* Circuit Network Background */}
-          <svg className="absolute inset-0 w-full h-full opacity-8">
-            {[...Array(30)].map((_, i) => {
-              const x1 = Math.random() * 100
-              const y1 = Math.random() * 100
-              const x2 = Math.random() * 100
-              const y2 = Math.random() * 100
-              return (
-                <motion.line
-                  key={`circuit-${i}`}
-                  x1={`${x1}%`}
-                  y1={`${y1}%`}
-                  x2={`${x2}%`}
-                  y2={`${y2}%`}
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.5"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 0.3 }}
-                  transition={{
-                    duration: 12 + Math.random() * 8,
-                    delay: Math.random() * 5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                  }}
-                />
-              )
-            })}
+          {/* Micro Shapes */}
+    {Array.from({ length: MICRO_COUNT }).map((_, i) => (
+      <motion.div
+        key={i}
+        className={`absolute border will-change-transform ${isDarkMode ? "border-[#D62828]/20" : "border-[#2B2D42]/20"}`}
+        style={{
+          width: isMobile ? "12px" : "20px", height: isMobile ? "12px" : "20px",
+          left: `${Math.random()*100}%`, top: `${Math.random()*100}%`,
+          borderRadius: i%2===0?"50%":"0",
+        }}
+        animate={{ scale: [1,1.2,1], opacity: [0.2,0.6,0.2] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      />
+    ))}
+
+    {/* Connection Nodes */}
+    {Array.from({ length: NODE_COUNT }).map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute rounded-full will-change-transform"
+        style={{
+          width: "4px", height: "4px",
+          left: `${Math.random()*100}%`, top: `${Math.random()*100}%`,
+          backgroundColor: isDarkMode ? "rgba(214,40,40,0.2)" : "rgba(43,45,66,0.2)",
+        }}
+        animate={{ scale: [1,1.5,1], opacity: [0.3,0.8,0.3] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+    ))}
 
             {/* Additional Circuit Patterns */}
-            {[...Array(25)].map((_, i) => {
-              const startX = Math.random() * 100
-              const startY = Math.random() * 100
-              const endX = startX + (Math.random() - 0.5) * 40
-              const endY = startY + (Math.random() - 0.5) * 40
-              const midX = (startX + endX) / 2 + (Math.random() - 0.5) * 20
-              const midY = (startY + endY) / 2 + (Math.random() - 0.5) * 20
+          {Array.from({ length: CIRCUIT_COUNT }).map((_, i) => {
+      const x1 = Math.random()*100, y1 = Math.random()*100;
+      const x2 = Math.random()*100, y2 = Math.random()*100;
+      return (
+        <motion.line
+          key={i}
+          className="absolute will-change-transform"
+          x1={`${x1}%`} y1={`${y1}%`} x2={`${x2}%`} y2={`${y2}%`}
+          stroke={isDarkMode ? "#D62828" : "#2B2D42"}
+          strokeWidth="0.5"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.3 }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      );
+    })}
 
-              return (
-                <motion.path
-                  key={`circuit-pattern-${i}`}
-                  d={`M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`}
-                  fill="none"
-                  stroke={isDarkMode ? "rgb(214, 40, 40)" : "rgb(43, 45, 66)"}
-                  strokeWidth="0.3"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 0.2 }}
-                  transition={{
-                    duration: 15 + Math.random() * 10,
-                    delay: Math.random() * 8,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "reverse",
-                    ease: "easeInOut",
-                  }}
-                />
-              )
-            })}
-          </svg>
-
-          {/* Small Rotating Geometric Elements */}
-          {[...Array(24)].map((_, i) => (
-            <motion.div
-              key={`geo-${i}`}
-              className={`absolute border ${isDarkMode ? "border-[#D62828]/25" : "border-[#2B2D42]/25"}`}
-              style={{
-                width: "40px",
-                height: "40px",
-                left: `${5 + (i % 8) * 12}%`,
-                top: `${10 + Math.floor(i / 8) * 15 + (i % 4) * 20}%`,
-              }}
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.3, 1],
-                opacity: [0.2, 0.5, 0.2],
-              }}
-              transition={{
-                duration: 15 + i * 2,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-            />
-          ))}
 
           {/* Micro Geometric Elements */}
           {[...Array(30)].map((_, i) => (
@@ -476,28 +336,6 @@ export default function Portfolio() {
             />
           ))}
 
-          {/* Floating Connection Nodes */}
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={`node-${i}`}
-              className={`absolute w-2 h-2 rounded-full ${isDarkMode ? "bg-[#D62828]/20" : "bg-[#2B2D42]/20"}`}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                x: [0, 50, -30, 0],
-                y: [0, -40, 60, 0],
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: 25 + Math.random() * 15,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
         </div>
 
         {/* Content */}
@@ -534,10 +372,10 @@ export default function Portfolio() {
                         setMenuOpen(false);
                       }}
                       className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${activeTab === tab.id
-                          ? "text-[#D62828]"
-                          : isDarkMode
-                            ? "text-gray-400 hover:text-white"
-                            : "text-[#444] hover:text-[#2B2D42]"
+                        ? "text-[#D62828]"
+                        : isDarkMode
+                          ? "text-gray-400 hover:text-white"
+                          : "text-[#444] hover:text-[#2B2D42]"
                         }`}
                     >
                       {tab.label}
@@ -565,30 +403,30 @@ export default function Portfolio() {
                       onChange={() => setIsDarkMode(!isDarkMode)}
                     />
                     <div
-                            className={`relative w-[88px] h-[40px] cursor-pointer bg-[#FAFAFA] peer-checked:bg-black rounded-full after:absolute after:content-[''] after:w-[32px] after:h-[32px] after:bg-gradient-to-r from-[#b91c1c] to-[#ef4444] peer-checked:from-[#7f1d1d] peer-checked:to-[#dc2626] after:rounded-full after:top-[3.2px] after:left-[4.1px] active:after:w-[50px] peer-checked:after:left-[82px] peer-checked:after:translate-x-[-100%] shadow-sm duration-300 after:duration-300 border ${isDarkMode ? "border-[#5a5a5a]" : "border-[#2B2D42]/20"}`}
-                          ></div>
-                          <svg
-                            height="0"
-                            width="100"
-                            viewBox="0 0 24 24"
-                            data-name="Layer 1"
-                            id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="fill-white peer-checked:opacity-60 absolute w-5 h-5 left-[10px] transition-opacity duration-300"
-                          >
-                            <path d="M12,17c-2.76,0-5-2.24-5-5s2.24-5,5-5,5,2.24,5,5-2.24,5-5,5ZM13,0h-2V5h2V0Zm0,19h-2v5h2v-5ZM5,11H0v2H5v-2Zm19,0h-5v2h5v-2Zm-2.81-6.78l-1.41-1.41-3.54,3.54,1.41,1.41,3.54-3.54ZM7.76,17.66l-1.41-1.41-3.54,3.54,1.41,1.41,3.54-3.54Zm0-11.31l-3.54-3.54-1.41,1.41,3.54,3.54,1.41-1.41Zm13.44,13.44l-3.54-3.54-1.41,1.41,3.54,3.54,1.41-1.41Z"></path>
-                          </svg>
-                          <svg
-                            height="512"
-                            width="512"
-                            viewBox="0 0 24 24"
-                            data-name="Layer 1"
-                            id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className={`fill-[#2B2D42] opacity-60 peer-checked:opacity-100 ${isDarkMode ? "peer-checked:fill-[#e24444]" : "peer-checked:fill-[#D62828]"} absolute w-5 h-5 right-[10px] transition-all duration-300`}
-                          >
-                            <path d="M12.009,24A12.067,12.067,0,0,1,.075,10.725,12.121,12.121,0,0,1,10.1.152a13,13,0,0,1,5.03.206,2.5,2.5,0,0,1,1.8,1.8,2.47,2.47,0,0,1-.7,2.425c-4.559,4.168-4.165,10.645.807,14.412h0a2.5,2.5,0,0,1-.7,4.319A13.875,13.875,0,0,1,12.009,24Zm.074-22a10.776,10.776,0,0,0-1.675.127,10.1,10.1,0,0,0-8.344,8.8A9.928,9.928,0,0,0,4.581,18.7a10.473,10.473,0,0,0,11.093,2.734.5.5,0,0,0,.138-.856h0C9.883,16.1,9.417,8.087,14.865,3.124a.459.459,0,0,0,.127-.465.491.491,0,0,0-.356-.362A10.68,10.68,0,0,0,12.083,2ZM20.5,12a1,1,0,0,1-.97-.757l-.358-1.43L17.74,9.428a1,1,0,0,1,.035-1.94l1.4-.325.351-1.406a1,1,0,0,1,1.94,0l.355,1.418,1.418.355a1,1,0,0,1,0,1.94l-1.418.355-.355,1.418A1,1,0,0,1,20.5,12ZM16,14a1,1,0,0,0,2,0A1,1,0,0,0,16,14Zm6,4a1,1,0,0,0,2,0A1,1,0,0,0,22,18Z"></path>
-                          </svg>
+                      className={`relative w-[88px] h-[40px] cursor-pointer bg-[#FAFAFA] peer-checked:bg-black rounded-full after:absolute after:content-[''] after:w-[32px] after:h-[32px] after:bg-gradient-to-r from-[#b91c1c] to-[#ef4444] peer-checked:from-[#7f1d1d] peer-checked:to-[#dc2626] after:rounded-full after:top-[3.2px] after:left-[4.1px] active:after:w-[50px] peer-checked:after:left-[82px] peer-checked:after:translate-x-[-100%] shadow-sm duration-300 after:duration-300 border ${isDarkMode ? "border-[#5a5a5a]" : "border-[#2B2D42]/20"}`}
+                    ></div>
+                    <svg
+                      height="0"
+                      width="100"
+                      viewBox="0 0 24 24"
+                      data-name="Layer 1"
+                      id="Layer_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="fill-white peer-checked:opacity-60 absolute w-5 h-5 left-[10px] transition-opacity duration-300"
+                    >
+                      <path d="M12,17c-2.76,0-5-2.24-5-5s2.24-5,5-5,5,2.24,5,5-2.24,5-5,5ZM13,0h-2V5h2V0Zm0,19h-2v5h2v-5ZM5,11H0v2H5v-2Zm19,0h-5v2h5v-2Zm-2.81-6.78l-1.41-1.41-3.54,3.54,1.41,1.41,3.54-3.54ZM7.76,17.66l-1.41-1.41-3.54,3.54,1.41,1.41,3.54-3.54Zm0-11.31l-3.54-3.54-1.41,1.41,3.54,3.54,1.41-1.41Zm13.44,13.44l-3.54-3.54-1.41,1.41,3.54,3.54,1.41-1.41Z"></path>
+                    </svg>
+                    <svg
+                      height="512"
+                      width="512"
+                      viewBox="0 0 24 24"
+                      data-name="Layer 1"
+                      id="Layer_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={`fill-[#2B2D42] opacity-60 peer-checked:opacity-100 ${isDarkMode ? "peer-checked:fill-[#e24444]" : "peer-checked:fill-[#D62828]"} absolute w-5 h-5 right-[10px] transition-all duration-300`}
+                    >
+                      <path d="M12.009,24A12.067,12.067,0,0,1,.075,10.725,12.121,12.121,0,0,1,10.1.152a13,13,0,0,1,5.03.206,2.5,2.5,0,0,1,1.8,1.8,2.47,2.47,0,0,1-.7,2.425c-4.559,4.168-4.165,10.645.807,14.412h0a2.5,2.5,0,0,1-.7,4.319A13.875,13.875,0,0,1,12.009,24Zm.074-22a10.776,10.776,0,0,0-1.675.127,10.1,10.1,0,0,0-8.344,8.8A9.928,9.928,0,0,0,4.581,18.7a10.473,10.473,0,0,0,11.093,2.734.5.5,0,0,0,.138-.856h0C9.883,16.1,9.417,8.087,14.865,3.124a.459.459,0,0,0,.127-.465.491.491,0,0,0-.356-.362A10.68,10.68,0,0,0,12.083,2ZM20.5,12a1,1,0,0,1-.97-.757l-.358-1.43L17.74,9.428a1,1,0,0,1,.035-1.94l1.4-.325.351-1.406a1,1,0,0,1,1.94,0l.355,1.418,1.418.355a1,1,0,0,1,0,1.94l-1.418.355-.355,1.418A1,1,0,0,1,20.5,12ZM16,14a1,1,0,0,0,2,0A1,1,0,0,0,16,14Zm6,4a1,1,0,0,0,2,0A1,1,0,0,0,22,18Z"></path>
+                    </svg>
                   </label>
 
                   {/* Botão “Resume” */}
@@ -627,10 +465,10 @@ export default function Portfolio() {
                           setMenuOpen(false);
                         }}
                         className={`px-4 py-2 text-sm font-medium text-left ${activeTab === tab.id
-                            ? "text-[#D62828]"
-                            : isDarkMode
-                              ? "text-gray-400 hover:text-white"
-                              : "text-[#444] hover:text-[#2B2D42]"
+                          ? "text-[#D62828]"
+                          : isDarkMode
+                            ? "text-gray-400 hover:text-white"
+                            : "text-[#444] hover:text-[#2B2D42]"
                           }`}
                       >
                         {tab.label}
@@ -980,7 +818,7 @@ export default function Portfolio() {
         </section>
 
         {/* Footer */}
-        <footer 
+        <footer
           className={`${isDarkMode ? "bg-black/90" : "bg-[#FAFAFA]/90"} border-t ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} py-12 backdrop-blur-xl`
           }
         >
