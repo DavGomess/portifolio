@@ -90,6 +90,24 @@ const projects = [
 
 const LINE_COUNT = 40;
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const listener = () => setIsMobile(media.matches);
+
+    // Set initial value
+    listener();
+    // Listen to changes
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, []);
+
+  return isMobile;
+}
+
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -160,7 +178,7 @@ export default function Portfolio() {
     }
   }
 
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useIsMobile();
 
   const ORBIT_COUNT = isMobile ? 3 : 6;
   const WIRE_COUNT = isMobile ? 4 : 8;
