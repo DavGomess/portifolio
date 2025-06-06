@@ -121,7 +121,7 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
-    const mouseShadow = document.querySelector(".mouse-shadow")
+    const mouseShadow = document.querySelector<HTMLElement>(".mouse-shadow")
 
     const moveCursor = (e: MouseEvent) => {
       if (mouseShadow) {
@@ -180,8 +180,8 @@ export default function Portfolio() {
 
   const isMobile = useIsMobile();
 
-  const ORBIT_COUNT = isMobile ? 3 : 6;
-  const WIRE_COUNT = isMobile ? 4 : 8;
+  const ORBIT_COUNT = isMobile ? 2 : 6;
+  const WIRE_COUNT = isMobile ? 2 : 8;
   const LINE_COUNT = isMobile ? 6 : 12;
   const CIRCUIT_COUNT = isMobile ? 5 : 10;
   const MICRO_COUNT = isMobile ? 5 : 10;
@@ -232,7 +232,7 @@ export default function Portfolio() {
                 height: isMobile ? "200px" : "300px",
               }}
               animate={{ rotate: [0, 360] }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
             >
               <svg width="100%" height="100%" viewBox="0 0 300 300" className="opacity-10">
                 <circle cx="150" cy="150" r="120" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="1" strokeDasharray="8,8" />
@@ -253,7 +253,7 @@ export default function Portfolio() {
           top:   `${15 + Math.floor(i/4) * 30}%`,
         }}
         animate={{ rotate: [0, -360], scale: [1,1.1,1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
         <svg width="100%" height="100%" viewBox="0 0 120 120" className="opacity-15">
           <polygon points="60,10 100,40 60,110 20,80 20,40" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.8"/>
@@ -261,54 +261,23 @@ export default function Portfolio() {
       </motion.div>
     ))}
 
-          {/* Floating Tech Lines */}
-          <AnimatePresence>
-      {techLinePositions.map((pos, i) => (
-        <motion.div
-          key={i}
-          className="absolute will-change-transform bg-gradient-to-r from-transparent via-current to-transparent opacity-40"
-          style={{
-            left: pos.left, top: pos.top,
-            width: isMobile ? "100px" : "150px", height: "2px",
-            color: isDarkMode ? "#D62828" : "#2B2D42",
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: pos.dur, repeat: Infinity, ease: "linear" }}
-        />
-      ))}
-    </AnimatePresence>
 
-          {/* Micro Shapes */}
-    {Array.from({ length: MICRO_COUNT }).map((_, i) => (
-      <motion.div
-        key={i}
-        className={`absolute border will-change-transform ${isDarkMode ? "border-[#D62828]/20" : "border-[#2B2D42]/20"}`}
-        style={{
-          width: isMobile ? "12px" : "20px", height: isMobile ? "12px" : "20px",
-          left: `${Math.random()*100}%`, top: `${Math.random()*100}%`,
-          borderRadius: i%2===0?"50%":"0",
-        }}
-        animate={{ scale: [1,1.2,1], opacity: [0.2,0.6,0.2] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-      />
-    ))}
+ {/* Simple Neural-Network Background */}
+          <svg
+            className="absolute inset-0 w-full h-full opacity-5 pointer-events-none"
+            viewBox="0 0 200 200"
+          >
+            <defs>
+              <pattern id="net" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill={isDarkMode ? "#D62828" : "#2B2D42"} />
+                <line x1="2" y1="2" x2="18" y2="18" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.2" />
+                <line x1="18" y1="2" x2="2" y2="18" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.2" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#net)" />
+          </svg>
 
-    {/* Connection Nodes */}
-    {Array.from({ length: NODE_COUNT }).map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute rounded-full will-change-transform"
-        style={{
-          width: "4px", height: "4px",
-          left: `${Math.random()*100}%`, top: `${Math.random()*100}%`,
-          backgroundColor: isDarkMode ? "rgba(214,40,40,0.2)" : "rgba(43,45,66,0.2)",
-        }}
-        animate={{ scale: [1,1.5,1], opacity: [0.3,0.8,0.3] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-    ))}
+
 
             {/* Additional Circuit Patterns */}
           {Array.from({ length: CIRCUIT_COUNT }).map((_, i) => {
