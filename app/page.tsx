@@ -219,8 +219,8 @@ export default function Portfolio() {
         className={`min-h-screen ${isDarkMode ? "bg-black" : "bg-[#FAFAFA]"} ${isDarkMode ? "text-white" : "text-[#333]"} relative overflow-hidden `}
       >
         {/* Continuous Animated Tech Background */}
-
         <TechNetworkBackground isDarkMode={isDarkMode}/>
+
         {/* Content */}
         <div className="relative z-20">
           {/* Fixed Header */}
@@ -330,7 +330,7 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/** Apenas UMA instância do dropdown abaixo, condicional em menuOpen **/}
+              {/** Abas mobile **/}
               <AnimatePresence>
                 {hasMounted && menuOpen && (
                   <motion.div
@@ -344,10 +344,12 @@ export default function Portfolio() {
                       <button
                         key={tab.id}
                         onClick={() => {
-                          scrollToSection(tab.id);
                           setMenuOpen(false);
+                          setTimeout(() => {
+                              scrollToSection(tab.id);
+                          }, 100)
                         }}
-                        className={`px-4 py-2 text-sm font-medium text-left ${activeTab === tab.id
+                        className={`relative px-4 py-2 text-sm font-medium text-left ${activeTab === tab.id
                           ? "text-[#D62828]"
                           : isDarkMode
                             ? "text-gray-400 hover:text-white"
