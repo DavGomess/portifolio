@@ -1,74 +1,66 @@
-import React, { useEffect, useRef } from "react"
+"use client"
 
-const TechNetworkBackground = () => {
-    const canvasRef = useRef(null)
+import { useEffect, useRef } from "react"
+
+interface TechNetworkBackgroundProps {
+    isDarkMode: boolean
+}
+
+export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgroundProps) {
+    const canvasRef = useRef<HTMLCanvasElement>(null)
 
     useEffect(() => {
-        const canvas = canvasRef.current as HTMLCanvasElement | null
-        if (!canvas) return
+        const canvas = canvasRef.current
+        const ctx = canvas?.getContext("2d")
 
-        const ctx = canvas.getContext("2d")
-        if (!ctx) return
+        if (!canvas || !ctx) return
 
         let width = window.innerWidth
         let height = window.innerHeight
         canvas.width = width
         canvas.height = height
 
-        const particles: {
-            x: number
-            y: number
-            vx: number
-            vy: number
-        }[] = []
-        const numParticles = Math.floor(width * 0.15)
-
-        for (let i = 0; i < numParticles; i++) {
-            particles.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-            })
-        }
+        const dots = Array.from({ length: 80 }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: Math.random() * 0.5 - 0.25,
+            vy: Math.random() * 0.5 - 0.25,
+        }))
 
         const draw = () => {
             ctx.clearRect(0, 0, width, height)
+            ctx.fillStyle = isDarkMode
+                ? "#D62828ee"     // Tema escuro: vermelho com 93% opacidade
+                : "#2B2D4280"     // Tema claro: cinza escuro com 50% opacidade
 
-            const isDark = document.documentElement.classList.contains("dark")
-            const pointColor = isDark ? "#ffffff44" : "#00000044"
-            const lineColor = isDark ? "#ffffff22" : "#00000022"
+            // LINHAS
+            ctx.strokeStyle = isDarkMode
+                ? "#D62828bb"     // Tema escuro: vermelho com ~73% opacidade
+                : "#2B2D4270"
 
-            particles.forEach((p) => {
+            dots.forEach((dot, i) => {
                 ctx.beginPath()
-                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
-                ctx.fillStyle = pointColor
+                ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2)
                 ctx.fill()
-            })
 
-            for (let i = 0; i < numParticles; i++) {
-                for (let j = i + 1; j < numParticles; j++) {
-                    const a = particles[i]
-                    const b = particles[j]
-                    const dx = a.x - b.x
-                    const dy = a.y - b.y
-                    const dist = Math.sqrt(dx * dx + dy * dy)
-                    if (dist < 100) {
+                for (let j = i + 1; j < dots.length; j++) {
+                    const dx = dot.x - dots[j].x
+                    const dy = dot.y - dots[j].y
+                    const dist = dx * dx + dy * dy
+
+                    if (dist < 10000) {
                         ctx.beginPath()
-                        ctx.moveTo(a.x, a.y)
-                        ctx.lineTo(b.x, b.y)
-                        ctx.strokeStyle = lineColor
-                        ctx.lineWidth = 0.5
+                        ctx.moveTo(dot.x, dot.y)
+                        ctx.lineTo(dots[j].x, dots[j].y)
                         ctx.stroke()
                     }
                 }
-            }
 
-            particles.forEach((p) => {
-                p.x += p.vx
-                p.y += p.vy
-                if (p.x < 0 || p.x > width) p.vx *= -1
-                if (p.y < 0 || p.y > height) p.vy *= -1
+                dot.x += dot.vx
+                dot.y += dot.vy
+
+                if (dot.x < 0 || dot.x > width) dot.vx *= -1
+                if (dot.y < 0 || dot.y > height) dot.vy *= -1
             })
 
             requestAnimationFrame(draw)
@@ -85,14 +77,17 @@ const TechNetworkBackground = () => {
 
         window.addEventListener("resize", handleResize)
         return () => window.removeEventListener("resize", handleResize)
-    }, [])
+    }, [isDarkMode])
 
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 -z-10 w-full h-full pointer-events-none"
+            className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
+            style={{
+                mixBlendMode: isDarkMode ? "lighten" : "darken",
+                willChange: "transform",
+                transform: "translateZ(0)",
+            }}
         />
     )
 }
-
-export default TechNetworkBackground

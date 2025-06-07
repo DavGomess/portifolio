@@ -220,7 +220,7 @@ export default function Portfolio() {
       >
         {/* Continuous Animated Tech Background */}
 
-        <TechNetworkBackground/>
+        <TechNetworkBackground isDarkMode={isDarkMode}/>
         {/* Content */}
         <div className="relative z-20">
           {/* Fixed Header */}
