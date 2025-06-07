@@ -31,7 +31,7 @@ export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgro
         canvas.height = height
 
         const dotCount = isMobile ? 30 : 80
-        const speedFactor = isMobile ? 0.2 : 0.5
+        const speedFactor = isMobile ? 0.08 : 0.2
         const radius = isMobile ? 1.5 : 2
 
         const dots = Array.from({ length: dotCount }, () => ({
@@ -44,8 +44,8 @@ export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgro
         const draw = () => {
             ctx.clearRect(0, 0, width, height)
 
-            ctx.fillStyle = isDarkMode ? "#d62828dd" : "#2B2D424D"
-            ctx.strokeStyle = isDarkMode ? "#ff4d6ddd" : "#2B2D4233"
+            ctx.fillStyle = isDarkMode ? "#d62828aa" : "#2B2D424D"
+            ctx.strokeStyle = isDarkMode ? "#ff4d6daa" : "#2B2D4233"
 
             dots.forEach((dot, i) => {
                 ctx.beginPath()
