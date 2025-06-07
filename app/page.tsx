@@ -221,7 +221,7 @@ export default function Portfolio() {
         <div className="fixed inset-0 z-0">
 
           {/* Large Rotating Orbital Structures */}
-          {Array.from({ length: ORBIT_COUNT }).map((_, i) => (
+          {/* {Array.from({ length: ORBIT_COUNT }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute will-change-transform"
@@ -234,15 +234,15 @@ export default function Portfolio() {
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
             >
-              <svg width="100%" height="100%" viewBox="0 0 300 300" className="opacity-10">
+              <svg width="100%" height="100%" viewBox="0 0 300 300" className="opacity-30">
                 <circle cx="150" cy="150" r="120" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="1" strokeDasharray="8,8" />
                 <circle cx="150" cy="150" r="90" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.6" opacity="0.6" />
               </svg>
             </motion.div>
-          ))}
+          ))} */}
 
           {/* Medium Rotating Wireframes */}
-        {Array.from({ length: WIRE_COUNT }).map((_, i) => (
+        {/* {Array.from({ length: WIRE_COUNT }).map((_, i) => (
       <motion.div
         key={i}
         className="absolute will-change-transform"
@@ -255,32 +255,16 @@ export default function Portfolio() {
         animate={{ rotate: [0, -360], scale: [1,1.1,1] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
-        <svg width="100%" height="100%" viewBox="0 0 120 120" className="opacity-15">
+        <svg width="100%" height="100%" viewBox="0 0 120 120" className="opacity-40">
           <polygon points="60,10 100,40 60,110 20,80 20,40" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.8"/>
         </svg>
       </motion.div>
-    ))}
-
-
- {/* Simple Neural-Network Background */}
-          <svg
-            className="absolute inset-0 w-full h-full opacity-5 pointer-events-none"
-            viewBox="0 0 200 200"
-          >
-            <defs>
-              <pattern id="net" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1" fill={isDarkMode ? "#D62828" : "#2B2D42"} />
-                <line x1="2" y1="2" x2="18" y2="18" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.2" />
-                <line x1="18" y1="2" x2="2" y2="18" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.2" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#net)" />
-          </svg>
+    ))} */}
 
 
 
             {/* Additional Circuit Patterns */}
-          {Array.from({ length: CIRCUIT_COUNT }).map((_, i) => {
+          {/* {Array.from({ length: CIRCUIT_COUNT }).map((_, i) => {
       const x1 = Math.random()*100, y1 = Math.random()*100;
       const x2 = Math.random()*100, y2 = Math.random()*100;
       return (
@@ -295,11 +279,11 @@ export default function Portfolio() {
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
       );
-    })}
+    })} */}
 
 
           {/* Micro Geometric Elements */}
-          {[...Array(30)].map((_, i) => (
+          {/* {[...Array(30)].map((_, i) => (
             <motion.div
               key={`micro-geo-${i}`}
               className={`absolute ${isDarkMode ? "border-[#D62828]/15" : "border-[#2B2D42]/15"}`}
@@ -321,7 +305,7 @@ export default function Portfolio() {
                 ease: "linear",
               }}
             />
-          ))}
+          ))} */}
 
         </div>
 
