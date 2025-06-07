@@ -91,17 +91,5 @@ body {
   body {
     @apply bg-background text-foreground;
 
-    /* Fallback de cor de fundo (preto profundo) */
-    /* background-color: #000000; */
-
-    /* Pattern hexagonal repetido */
-    /* background-image: url("/hexagons.svg"); */
-    /* background-repeat: repeat; */
-    /* background-position: center; */
-    /* background-size: auto; */
-
-    /* Overlay de cor sutil vermelha */
-    /* background-blend-mode: multiply; */
-    /* background-color: #D62828; */
   }
 }
