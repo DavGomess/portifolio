@@ -31,12 +31,12 @@ export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgro
             ctx.clearRect(0, 0, width, height)
             ctx.fillStyle = isDarkMode
                 ? "#D62828ee"     // Tema escuro: vermelho com 93% opacidade
-                : "#2B2D4280"     // Tema claro: cinza escuro com 50% opacidade
+                : "#2B2D424D"     // Tema claro: cinza escuro com 50% opacidade
 
             // LINHAS
             ctx.strokeStyle = isDarkMode
                 ? "#D62828bb"     // Tema escuro: vermelho com ~73% opacidade
-                : "#2B2D4270"
+                : "#2B2D4244"
 
             dots.forEach((dot, i) => {
                 ctx.beginPath()
