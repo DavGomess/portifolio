@@ -82,17 +82,26 @@ body {
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
+  /* aplica borda padrão em todos os elementos */
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
 
+    /* Fallback de cor de fundo (preto profundo) */
+    background-color: #000000;
+
+    /* Pattern hexagonal repetido */
     background-image: url("/hexagons.svg");
     background-repeat: repeat;
-    background-size: cover;
+    background-position: center;
+    background-size: auto;
+
+    /* Overlay de cor sutil vermelha */
+    background-blend-mode: multiply;
+    background-color: #D62828;
   }
 }
