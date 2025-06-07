@@ -44,8 +44,8 @@ export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgro
         const draw = () => {
             ctx.clearRect(0, 0, width, height)
 
-            ctx.fillStyle = isDarkMode ? "#d62828aa" : "#2B2D424D"
-            ctx.strokeStyle = isDarkMode ? "#ff4d6daa" : "#2B2D4233"
+            ctx.fillStyle = isDarkMode ? "#d6282866" : "#2B2D424D"
+            ctx.strokeStyle = isDarkMode ? "#ff4d6d66" : "#2B2D4233"
 
             dots.forEach((dot, i) => {
                 ctx.beginPath()
