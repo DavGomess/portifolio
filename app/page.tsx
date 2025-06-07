@@ -219,7 +219,7 @@ export default function Portfolio() {
         className={`min-h-screen ${isDarkMode ? "bg-black" : "bg-[#FAFAFA]"} ${isDarkMode ? "text-white" : "text-[#333]"} relative overflow-hidden `}
       >
         {/* Continuous Animated Tech Background */}
-        <TechNetworkBackground isDarkMode={isDarkMode}/>
+        <TechNetworkBackground isDarkMode={isDarkMode} />
 
         {/* Content */}
         <div className="relative z-20">
@@ -346,7 +346,7 @@ export default function Portfolio() {
                         onClick={() => {
                           setMenuOpen(false);
                           setTimeout(() => {
-                              scrollToSection(tab.id);
+                            scrollToSection(tab.id);
                           }, 100)
                         }}
                         className={`relative px-4 py-2 text-sm font-medium text-left ${activeTab === tab.id
@@ -556,7 +556,7 @@ export default function Portfolio() {
             >
               Digital Constructs
             </motion.h2>
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid lg:grid-cols-2 gap-8 justify-items-center align-items-center">
               {projects.map((project, index) => (
                 <motion.div
                   key={project.title}
@@ -673,8 +673,7 @@ export default function Portfolio() {
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
                       size="lg"
-                      className={`bg-gradient-to-r from-[#D62828] to-[#E76F51] hover:from-[#D62828] hover:to-[#FF4D6D] text-white text-xl px-12 py-6 group shadow-lg ${isDarkMode ? "shadow-[#D62828]/25" : "shadow-[#2B2D42]/25"}`}
-                    >
+                      className={`w-full max-w-xs mx-auto bg-gradient-to-r from-[#D62828] to-[#E76F51] hover:from-[#D62828] hover:to-[#FF4D6D] text-white text-xl px-8 py-4 group shadow-lg ${isDarkMode ? "shadow-[#D62828]/25" : "shadow-[#2B2D42]/25"}`}                    >
                       <Mail className="mr-4 h-7 w-7 group-hover:rotate-12 transition-transform duration-300" />
                       david.gomes@neural.dev
                       <ArrowRight className="ml-4 h-7 w-7 group-hover:translate-x-1 transition-transform duration-300" />
