@@ -556,7 +556,7 @@ export default function Portfolio() {
             >
               Digital Constructs
             </motion.h2>
-            <div className="grid lg:grid-cols-2 gap-8 justify-items-center align-items-center">
+            <div className="grid lg:grid-cols-2 gap-8 justify-center">
               {projects.map((project, index) => (
                 <motion.div
                   key={project.title}

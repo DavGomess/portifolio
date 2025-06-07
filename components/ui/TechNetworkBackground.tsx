@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface TechNetworkBackgroundProps {
     isDarkMode: boolean
@@ -8,11 +8,21 @@ interface TechNetworkBackgroundProps {
 
 export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgroundProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        const updateIsMobile = () => {
+            setIsMobile(window.innerWidth <= 640) // md breakpoint
+        }
+
+        updateIsMobile()
+        window.addEventListener("resize", updateIsMobile)
+        return () => window.removeEventListener("resize", updateIsMobile)
+    }, [])
 
     useEffect(() => {
         const canvas = canvasRef.current
         const ctx = canvas?.getContext("2d")
-
         if (!canvas || !ctx) return
 
         let width = window.innerWidth
@@ -20,35 +30,33 @@ export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgro
         canvas.width = width
         canvas.height = height
 
-        const dots = Array.from({ length: 80 }, () => ({
+        const dotCount = isMobile ? 30 : 80
+        const speedFactor = isMobile ? 0.2 : 0.5
+        const radius = isMobile ? 1.5 : 2
+
+        const dots = Array.from({ length: dotCount }, () => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: Math.random() * 0.5 - 0.25,
-            vy: Math.random() * 0.5 - 0.25,
+            vx: Math.random() * speedFactor - speedFactor / 2,
+            vy: Math.random() * speedFactor - speedFactor / 2,
         }))
 
         const draw = () => {
             ctx.clearRect(0, 0, width, height)
-            ctx.fillStyle = isDarkMode
-                ? "#d62828dd"     // Tema escuro: vermelho com 93% opacidade
-                : "#2B2D424D"     // Tema claro: cinza escuro com 50% opacidade
 
-            // LINHAS
-            ctx.strokeStyle = isDarkMode
-                ? "#ff4d6ddd"     // Tema escuro: vermelho com ~73% opacidade
-                : "#2B2D4244"
+            ctx.fillStyle = isDarkMode ? "#d62828dd" : "#2B2D424D"
+            ctx.strokeStyle = isDarkMode ? "#ff4d6ddd" : "#2B2D4233"
 
             dots.forEach((dot, i) => {
                 ctx.beginPath()
-                ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2)
+                ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2)
                 ctx.fill()
 
                 for (let j = i + 1; j < dots.length; j++) {
                     const dx = dot.x - dots[j].x
                     const dy = dot.y - dots[j].y
                     const dist = dx * dx + dy * dy
-
-                    if (dist < 10000) {
+                    if (dist < 9000) {
                         ctx.beginPath()
                         ctx.moveTo(dot.x, dot.y)
                         ctx.lineTo(dots[j].x, dots[j].y)
@@ -77,7 +85,7 @@ export default function TechNetworkBackground({ isDarkMode }: TechNetworkBackgro
 
         window.addEventListener("resize", handleResize)
         return () => window.removeEventListener("resize", handleResize)
-    }, [isDarkMode])
+    }, [isDarkMode, isMobile])
 
     return (
         <canvas
