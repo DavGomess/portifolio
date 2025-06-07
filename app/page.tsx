@@ -218,96 +218,20 @@ export default function Portfolio() {
         className={`min-h-screen ${isDarkMode ? "bg-black" : "bg-[#FAFAFA]"} ${isDarkMode ? "text-white" : "text-[#333]"} relative overflow-hidden `}
       >
         {/* Continuous Animated Tech Background */}
-        <div className="fixed inset-0 z-0">
 
-          {/* Large Rotating Orbital Structures */}
-          {/* {Array.from({ length: ORBIT_COUNT }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute will-change-transform"
-              style={{
-                left: `${10 + (i % 2) * 50}%`,
-                top: `${10 + Math.floor(i / 2) * 45}%`,
-                width: isMobile ? "200px" : "300px",
-                height: isMobile ? "200px" : "300px",
-              }}
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-            >
-              <svg width="100%" height="100%" viewBox="0 0 300 300" className="opacity-30">
-                <circle cx="150" cy="150" r="120" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="1" strokeDasharray="8,8" />
-                <circle cx="150" cy="150" r="90" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.6" opacity="0.6" />
-              </svg>
-            </motion.div>
-          ))} */}
-
-          {/* Medium Rotating Wireframes */}
-        {/* {Array.from({ length: WIRE_COUNT }).map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute will-change-transform"
-        style={{
-          width: isMobile ? "80px" : "120px",
-          height: isMobile ? "80px" : "120px",
-          left:  `${5 + (i % 4) * 24}%`,
-          top:   `${15 + Math.floor(i/4) * 30}%`,
-        }}
-        animate={{ rotate: [0, -360], scale: [1,1.1,1] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      >
-        <svg width="100%" height="100%" viewBox="0 0 120 120" className="opacity-40">
-          <polygon points="60,10 100,40 60,110 20,80 20,40" fill="none" stroke={isDarkMode ? "#D62828" : "#2B2D42"} strokeWidth="0.8"/>
-        </svg>
-      </motion.div>
-    ))} */}
-
-
-
-            {/* Additional Circuit Patterns */}
-          {/* {Array.from({ length: CIRCUIT_COUNT }).map((_, i) => {
-      const x1 = Math.random()*100, y1 = Math.random()*100;
-      const x2 = Math.random()*100, y2 = Math.random()*100;
-      return (
-        <motion.line
-          key={i}
-          className="absolute will-change-transform"
-          x1={`${x1}%`} y1={`${y1}%`} x2={`${x2}%`} y2={`${y2}%`}
-          stroke={isDarkMode ? "#D62828" : "#2B2D42"}
-          strokeWidth="0.5"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.3 }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        {/* Static Hexagons Background */}
+        <div
+          className="fixed inset-0 z-0 pointer-events-none"
+          style={{
+            backgroundColor: "#000000",
+            backgroundImage: `url("/hexagons.svg")`,
+            backgroundRepeat: "repeat",
+            backgroundPosition: "center",
+            backgroundSize: "auto",
+            backgroundBlendMode: "multiply",
+          }}
         />
-      );
-    })} */}
 
-
-          {/* Micro Geometric Elements */}
-          {/* {[...Array(30)].map((_, i) => (
-            <motion.div
-              key={`micro-geo-${i}`}
-              className={`absolute ${isDarkMode ? "border-[#D62828]/15" : "border-[#2B2D42]/15"}`}
-              style={{
-                width: "20px",
-                height: "20px",
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                borderRadius: i % 3 === 0 ? "50%" : "0",
-              }}
-              animate={{
-                rotate: [0, 360],
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.1, 0.3, 0.1],
-              }}
-              transition={{
-                duration: 20 + i * 1.5,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-            />
-          ))} */}
-
-        </div>
 
         {/* Content */}
         <div className="relative z-20">
