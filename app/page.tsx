@@ -3,26 +3,9 @@
 import { useState, useEffect, useMemo } from "react"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import TechNetworkBackground from "@/components/ui/TechNetworkBackground";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ExternalLink,
-  Code,
-  Database,
-  Globe,
-  Smartphone,
-  Download,
-  ArrowRight,
-  Terminal,
-  Cpu,
-  Server,
-  Layers,
-  Brain,
-  Rocket,
-  Menu,
-  X
-} from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, Code, Download, ArrowRight, Server, Brain, Rocket, Menu, X } from "lucide-react"
+import { SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiSass, SiNodedotjs, SiGit, SiGithub, SiPostgresql, SiMongodb, SiInsomnia, SiBootstrap, SiExpress } from "react-icons/si";
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -36,15 +19,23 @@ const tabs = [
 ]
 
 const skills = [
-  { name: "JavaScript", level: 95, icon: Code, category: "Frontend" },
-  { name: "React/Next.js", level: 92, icon: Globe, category: "Frontend" },
-  { name: "Node.js", level: 88, icon: Server, category: "Backend" },
-  { name: "TypeScript", level: 90, icon: Terminal, category: "Language" },
-  { name: "Python", level: 85, icon: Cpu, category: "Language" },
-  { name: "Database", level: 87, icon: Database, category: "Backend" },
-  { name: "DevOps", level: 82, icon: Layers, category: "Infrastructure" },
-  { name: "Mobile Dev", level: 80, icon: Smartphone, category: "Mobile" },
-]
+  { name: "HTML", icon: SiHtml5 },
+  { name: "CSS", icon: SiCss3 },
+  { name: "JavaScript", icon: SiJavascript },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "React", icon: SiReact },
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "Sass", icon: SiSass },
+  { name: "Bootstrap", icon: SiBootstrap },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Express", icon: SiExpress },
+  { name: "Git", icon: SiGit },
+  { name: "GitHub", icon: SiGithub },
+  { name: "Postgres", icon: SiPostgresql },
+  { name: "MongoDB", icon: SiMongodb },
+  { name: "Insomnia", icon: SiInsomnia },
+];
+
 
 const projects = [
   {
@@ -365,7 +356,7 @@ export default function Portfolio() {
             </div>
           </motion.nav>
         </div>
-        {/* Hero Section */}
+        {/* secao home */}
         <section id="home" className="min-h-screen flex items-center justify-center relative pt-20" >
           <div className="text-center max-w-6xl mx-auto px-6">
             <motion.h1
@@ -375,13 +366,11 @@ export default function Portfolio() {
               className="text-7xl md:text-9xl font-bold mb-8 relative"
             >
               <span
-                className={`bg-gradient-to-r ${isDarkMode ? "from-[#D62828] via-[#FF4D6D] to-[#E76F51]" : "from-[#D62828] via-[#E76F51] to-[#FF4D6D]"} bg-clip-text text-transparent`}
-              >
+                className={`bg-gradient-to-r ${isDarkMode ? "from-[#D62828] via-[#FF4D6D] to-[#E76F51]" : "from-[#D62828] via-[#E76F51] to-[#FF4D6D]"} bg-clip-text text-transparent`}>
                 David Gomes
               </span>
               <div
-                className={`absolute inset-0 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] via-[#FF4D6D] to-[#E76F51]" : "from-[#D62828] via-[#E76F51] to-[#FF4D6D]"} bg-clip-text text-transparent blur-2xl opacity-50 -z-10`}
-              >
+                className={`absolute inset-0 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] via-[#FF4D6D] to-[#E76F51]" : "from-[#D62828] via-[#E76F51] to-[#FF4D6D]"} bg-clip-text text-transparent blur-2xl opacity-50 -z-10`}>
                 David Gomes
               </div>
             </motion.h1>
@@ -399,21 +388,17 @@ export default function Portfolio() {
                   /&gt;
                 </span>
               </p>
-              <p
-                className={`text-xl ${isDarkMode ? "text-gray-400" : "text-[#444]"} max-w-4xl mx-auto leading-relaxed`}
-              >
-                Architecting the future of digital experiences through cutting-edge technology, neural networks, and
-                immersive web applications that push the boundaries of innovation.
-              </p>
-              <div className="flex justify-center space-x-6 pt-8">
+              <div className="flex justify-center space-x-6 pt-1">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    className={`bg-gradient-to-r from-[#D62828] to-[#E76F51] hover:from-[#D62828] hover:to-[#FF4D6D] text-white text-lg px-8 py-4 group shadow-lg ${isDarkMode ? "shadow-[#D62828]/25" : "shadow-[#2B2D42]/25"}`}
-                  >
-                    <Github className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
-                    GitHub
-                  </Button>
+                  <a href="https://github.com/DavGomess" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      size="lg"
+                      className={`bg-gradient-to-r from-[#D62828] to-[#E76F51] hover:from-[#D62828] hover:to-[#FF4D6D] text-white text-lg px-8 py-4 group shadow-lg ${isDarkMode ? "shadow-[#D62828]/25" : "shadow-[#2B2D42]/25"}`}
+                    >
+                      <Github className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                      GitHub
+                    </Button>
+                  </a>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button
@@ -430,7 +415,7 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* About Section */}
+        {/* secao sobre */}
         <section id="about" className="py-24 px-6" >
           <div className="container mx-auto max-w-7xl">
             <motion.h2
@@ -438,9 +423,8 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}
-            >
-              Neural Profile
+              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}>
+              Sobre Mim
             </motion.h2>
             <div className="flex justify-center">
               <motion.div
@@ -454,42 +438,39 @@ export default function Portfolio() {
                   className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl border ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} rounded-2xl p-8`}
                 >
                   <p className={`text-xl ${isDarkMode ? "text-gray-300" : "text-[#444]"} leading-relaxed mb-6`}>
-                    I'm a quantum-enhanced developer with over 7 years of experience crafting next-generation digital
-                    experiences. My expertise spans neural network architectures, immersive AR/VR applications, and
-                    scalable cloud infrastructures.
+                    Sou estudante de Análise e Desenvolvimento de Sistemas e desenvolvo projetos web práticos. Gosto de resolver problemas com lógica, aprender rápido e transformar ideias em soluções fáceis de usar. Busco oportunidade para aplicar e ampliar minhas habilidades.
                   </p>
                   <p className={`text-xl ${isDarkMode ? "text-gray-300" : "text-[#444]"} leading-relaxed mb-8`}>
-                    Currently pioneering the intersection of AI and web development, I specialize in building systems
-                    that push the boundaries of what's possible in the digital realm.
+                    Atualmente concentro meus estudos em desenvolvimento web com foco em back-end, construindo soluções orientadas à resolução de problemas reais.
                   </p>
                   <div className="grid grid-cols-2 gap-6">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
                     >
+                      <Code className="w-6 h-6" />
+                      <span className="text-lg">Desenvolvimento Web</span>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
+                    >
+                      <Server className="w-6 h-6" />
+                      <span className="text-lg">APIs e Servidores</span>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
+                    >
                       <Brain className="w-6 h-6" />
-                      <span className="text-lg">Neural Networks</span>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
-                    >
-                      <Cpu className="w-6 h-6" />
-                      <span className="text-lg">Quantum Computing</span>
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
-                    >
-                      <Globe className="w-6 h-6" />
-                      <span className="text-lg">Web3 Technologies</span>
+                      <span className="text-lg">Resolução de Problemas</span>
                     </motion.div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
                     >
                       <Rocket className="w-6 h-6" />
-                      <span className="text-lg">AR/VR Development</span>
+                      <span className="text-lg">Desenvolvimento Contínuo</span>
                     </motion.div>
                   </div>
                 </div>
@@ -498,53 +479,52 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* Skills Section */}
-        <section id="skills" className="py-24 px-6 bg-gradient-to-b from-transparent via-[#D62828]/5 to-transparent" >
+        {/* secao habilidades */}
+        <section id="skills" className="py-12 px-0 bg-gradient-to-b from-transparent via-[#D62828]/5 to-transparent" >
           <div className="container mx-auto max-w-7xl">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}
-            >
-              Tech Arsenal
+              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}>
+              Habilidades
             </motion.h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, rotateY: 5 }}
-                  className="group"
-                >
-                  <Card
-                    className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} hover:border-[#D62828]/50 transition-all duration-500 h-full`}
+            <div className="grid md:grid-cols-6 lg:grid-cols-6 gap-6">
+              {skills.map((skill, index) => {
+                const Icon = skill.icon; // <- corrigido
+                return (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05, rotateY: 5 }}
+                    className="group"
                   >
-                    <CardContent className="p-8">
-                      <div className="text-center mb-6">
-                        <div className="p-4 bg-gradient-to-br from-[#D62828]/20 to-[#E76F51]/20 rounded-xl mx-auto w-fit mb-4">
-                          <skill.icon className={`w-12 h-12 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"}`} />
+                    <Card
+                      className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} hover:border-[#D62828]/50 transition-all duration-500 h-full w-54`}
+                    >
+                      <CardContent className="p-4">
+                        <div className="text-center">
+                          <div className="p-4 bg-gradient-to-br from-[#D62828]/20 to-[#E76F51]/20 rounded-xl mx-auto w-fit mb-4">
+                            <Icon className={`w-12 h-12 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"}`} />
+                          </div>
+                          <h3 className={`text-xl font-semibold ${isDarkMode ? "text-white" : "text-[#2B2D42]"} mb-2`}>
+                            {skill.name}
+                          </h3>
                         </div>
-                        <h3 className={`text-xl font-semibold ${isDarkMode ? "text-white" : "text-[#2B2D42]"} mb-2`}>
-                          {skill.name}
-                        </h3>
-                        <span className={`text-sm ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} font-mono`}>
-                          {skill.category}
-                        </span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        {/* Projects Section */}
+        {/* Psecao projetos */}
         <section id="projects" className="py-24 px-6" >
           <div className="container mx-auto max-w-7xl">
             <motion.h2
@@ -649,9 +629,8 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}
-            >
-              Neural Link
+              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}>
+              Contatos
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -664,25 +643,27 @@ export default function Portfolio() {
                 className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl border ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} rounded-2xl p-12`}
               >
                 <p
-                  className={`text-2xl ${isDarkMode ? "text-gray-300" : "text-[#444]"} mb-12 max-w-3xl mx-auto leading-relaxed`}
-                >
-                  Ready to build the future together? Let's connect and create something extraordinary that pushes the
-                  boundaries of digital innovation and transforms ideas into reality.
+                  className={`text-2xl ${isDarkMode ? "text-gray-300" : "text-[#444]"} mb-12 max-w-3xl mx-auto leading-relaxed`}>
+                  Conecte-se comigo através destes canais e vamos conversar sobre ideias, projetos e oportunidades.
                 </p>
                 <div className="flex justify-center mb-12">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                      size="lg"
-                      className={`w-full max-w-xs mx-auto bg-gradient-to-r from-[#D62828] to-[#E76F51] hover:from-[#D62828] hover:to-[#FF4D6D] text-white text-xl px-8 py-4 group shadow-lg ${isDarkMode ? "shadow-[#D62828]/25" : "shadow-[#2B2D42]/25"}`}                    >
-                      <Mail className="mr-4 h-7 w-7 group-hover:rotate-12 transition-transform duration-300" />
-                      david.gomes@neural.dev
-                      <ArrowRight className="ml-4 h-7 w-7 group-hover:translate-x-1 transition-transform duration-300" />
-                    </Button>
+                    <a href="mailto:davidgcontato7@gmail.com">
+                      <Button
+                        size="lg"
+                        className={`w-full max-w-xs mx-auto bg-gradient-to-r from-[#D62828] to-[#E76F51] hover:from-[#D62828] hover:to-[#FF4D6D] text-white text-xl px-8 py-4 group shadow-lg ${isDarkMode ? "shadow-[#D62828]/25" : "shadow-[#2B2D42]/25"}`}                    >
+                        <Mail className="mr-1 h-7 w-7 group-hover:rotate-12 transition-transform duration-300" />
+                        davidgcontato7@gmail.com
+                        <ArrowRight className="ml-1 h-7 w-7 group-hover:translate-x-1 transition-transform duration-300" />
+                      </Button>
+                    </a>
                   </motion.div>
                 </div>
                 <div className="flex justify-center space-x-12">
                   <motion.a
-                    href="#"
+                    href="https://github.com/DavGomess"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     className={`${isDarkMode ? "text-gray-400" : "text-[#444]"} hover:text-[#D62828] transition-colors duration-300`}
                   >
@@ -708,7 +689,7 @@ export default function Portfolio() {
         >
           <div className="container mx-auto px-6 text-center">
             <p className={`${isDarkMode ? "text-gray-400" : "text-[#444]"} font-mono text-lg`}>
-              ©  David Gomes
+              © Copyright 2025 Feito por David Gomes
             </p>
           </div>
         </footer>
