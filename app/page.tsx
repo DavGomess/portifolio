@@ -402,30 +402,30 @@ export default function Portfolio() {
                   <p className={`text-xl ${isDarkMode ? "text-gray-300" : "text-[#444]"} leading-relaxed mb-8`}>
                     Atualmente concentro meus estudos em desenvolvimento web com foco em back-end, construindo soluções orientadas à resolução de problemas reais.
                   </p>
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
+                      className={`flex items-center space-x-3 p-2 sm:p-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Code className="w-6 h-6" />
-                      <span className="text-lg">Desenvolvimento Web</span>
+                      <span className="text-base sm:text-lg">Desenvolvimento Web</span>
                     </motion.div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
+                      className={`flex items-center space-x-3 p-2 sm:p-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Server className="w-6 h-6" />
-                      <span className="text-lg">APIs e Servidores</span>
+                      <span className="text-base sm:text-lg">APIs e Servidores</span>
                     </motion.div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
+                      className={`flex items-center space-x-3 p-2 sm:p-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Brain className="w-6 h-6" />
-                      <span className="text-lg">Resolução de Problemas</span>
+                      <span className="text-base sm:text-lg">Resolução de Problemas</span>
                     </motion.div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
+                      className={`flex items-center space-x-3 p-2 sm:p-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Rocket className="w-6 h-6" />
-                      <span className="text-lg">Desenvolvimento Contínuo</span>
+                      <span className="text-base sm:text-lg">Desenvolvimento Contínuo</span>
                     </motion.div>
                   </div>
                 </div>
@@ -445,7 +445,7 @@ export default function Portfolio() {
               className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}>
               Habilidades
             </motion.h2>
-            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-6 gap-6 px-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-4">
               {skills.map((skill, index) => {
                 const Icon = skill.icon; // <- corrigido
                 return (
@@ -459,14 +459,14 @@ export default function Portfolio() {
                     className="group"
                   >
                     <Card
-                      className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} hover:border-[#D62828]/50 transition-all duration-500 h-full w-54`}
+                      className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} hover:border-[#D62828]/50 transition-all duration-500 h-full w-full sm:w-44 md:w-54`}
                     >
                       <CardContent className="p-4">
                         <div className="text-center">
                           <div className="p-4 bg-gradient-to-br from-[#D62828]/20 to-[#E76F51]/20 rounded-xl mx-auto w-fit mb-4">
                             <Icon className={`w-12 h-12 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"}`} />
                           </div>
-                          <h3 className={`text-xl font-semibold ${isDarkMode ? "text-white" : "text-[#2B2D42]"} mb-2`}>
+                          <h3 className={`text-base sm:text-lg md:text-xl font-semibold ${isDarkMode ? "text-white" : "text-[#2B2D42]"} mb-2`}>
                             {skill.name}
                           </h3>
                         </div>
