@@ -445,7 +445,7 @@ export default function Portfolio() {
               className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}>
               Habilidades
             </motion.h2>
-            <div className="grid md:grid-cols-6 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-6 gap-6 px-4">
               {skills.map((skill, index) => {
                 const Icon = skill.icon; // <- corrigido
                 return (
