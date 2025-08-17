@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import TechNetworkBackground from "@/components/ui/TechNetworkBackground";
 import { Github, Linkedin, Mail, ExternalLink, Code, Download, ArrowRight, Server, Brain, Rocket, Menu, X } from "lucide-react"
 import { SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiSass, SiNodedotjs, SiGit, SiGithub, SiPostgresql, SiMongodb, SiInsomnia, SiBootstrap, SiExpress } from "react-icons/si";
@@ -80,33 +80,11 @@ const projects = [
   },
 ]
 
-const LINE_COUNT = 40;
-
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)");
-    const listener = () => setIsMobile(media.matches);
-
-    // Set initial value
-    listener();
-    // Listen to changes
-    media.addEventListener("change", listener);
-
-    return () => media.removeEventListener("change", listener);
-  }, []);
-
-  return isMobile;
-}
-
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true)
   const [activeTab, setActiveTab] = useState("home")
-  const { scrollYProgress } = useScroll()
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
 
   useEffect(() => {
     setHasMounted(true);
@@ -169,25 +147,6 @@ export default function Portfolio() {
       element.scrollIntoView({ behavior: "smooth" })
     }
   }
-
-  const isMobile = useIsMobile();
-
-  const ORBIT_COUNT = isMobile ? 2 : 6;
-  const WIRE_COUNT = isMobile ? 2 : 8;
-  const LINE_COUNT = isMobile ? 6 : 12;
-  const CIRCUIT_COUNT = isMobile ? 5 : 10;
-  const MICRO_COUNT = isMobile ? 5 : 10;
-  const NODE_COUNT = isMobile ? 4 : 8;
-
-  // Dentro do componente React:
-  const techLinePositions = useMemo(() => {
-    if (!hasMounted) return [];
-    return Array.from({ length: LINE_COUNT }).map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      dur: 15 + Math.random() * 10,
-    }));
-  }, [hasMounted, LINE_COUNT]);
 
   return (
     <>
@@ -446,29 +405,25 @@ export default function Portfolio() {
                   <div className="grid grid-cols-2 gap-6">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
-                    >
+                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Code className="w-6 h-6" />
                       <span className="text-lg">Desenvolvimento Web</span>
                     </motion.div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
-                    >
+                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Server className="w-6 h-6" />
                       <span className="text-lg">APIs e Servidores</span>
                     </motion.div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
-                    >
+                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Brain className="w-6 h-6" />
                       <span className="text-lg">Resolução de Problemas</span>
                     </motion.div>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}
-                    >
+                      className={`flex items-center space-x-3 ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} p-3 rounded-lg bg-[#D62828]/10 border border-[#D62828]/20`}>
                       <Rocket className="w-6 h-6" />
                       <span className="text-lg">Desenvolvimento Contínuo</span>
                     </motion.div>
@@ -532,9 +487,8 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}
-            >
-              Digital Constructs
+              className={`text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r ${isDarkMode ? "from-[#D62828] to-[#FF4D6D]" : "from-[#D62828] to-[#E76F51]"} bg-clip-text text-transparent`}>
+              Projetos
             </motion.h2>
             <div className="grid lg:grid-cols-2 gap-8 justify-center">
               {projects.map((project, index) => (
