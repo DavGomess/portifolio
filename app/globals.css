@@ -92,3 +92,20 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.mouse-shadow {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  background: radial-gradient(
+    circle,
+    rgba(251, 75, 78, 0.3) 0%,
+    rgba(251, 75, 78, 0) 70%
+  );
+  filter: blur(30px);
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
