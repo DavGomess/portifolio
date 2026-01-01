@@ -1,43 +1,23 @@
 
 export const projects = [
-{
-    title: "Neural Analytics Platform",
+    {
+    title: "meuSaldo - Controle Financeiro",
     description:
-        "Advanced AI-powered analytics dashboard with real-time data visualization, machine learning insights, and predictive modeling capabilities for enterprise clients.",
-    tech: ["React", "Python", "TensorFlow", "D3.js", "WebGL", "PostgreSQL"],
-    github: "#",
-    live: "#",
+        "Aplicação web para controle financeiro pessoal, permitindo gerenciar receitas, despesas, contas a pagar, orçamentos e metas financeiras de forma simples e organizada.",
+    tech: ["TypeScript", "React", "Next.js", "Node.js", "Express", "PostgreSQL"],
+    github: "https://github.com/DavGomess/meuSaldo",
+    live: "https://meusaldo-finance.vercel.app/login",
     featured: true,
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/dashboard.png",
 },
     {
-    title: "Quantum E-Commerce",
+    title: "Portfólio Pessoal",
     description:
-        "Next-generation e-commerce platform with blockchain integration, AR product visualization, and AI-driven personalized recommendations.",
-    tech: ["Next.js", "Solidity", "Three.js", "Stripe", "MongoDB"],
-    github: "#",
-    live: "#",
-    featured: true,
-    image: "/placeholder.svg?height=300&width=500",
-},
-    {
-    title: "CyberSync Workspace",
-    description:
-        "Real-time collaborative workspace with holographic interfaces, quantum encryption, and seamless team synchronization.",
-    tech: ["React", "WebRTC", "Socket.io", "Rust", "WebAssembly"],
-    github: "#",
-    live: "#",
+        "Portfólio profissional desenvolvido para apresentar projetos, habilidades técnicas e informações de contato de forma clara e organizada. O foco está em uma experiência de navegação fluida, design responsivo e apresentação visual consistente.",
+    tech: ["CSS", "TypeScript", "React", "Next.js", "Tailwind CSS"],
+    github: "https://github.com/DavGomess/portifolio",
+    live: "https://portifolio-davgomess.vercel.app/",
     featured: false,
-    image: "/placeholder.svg?height=300&width=400",
-},
-    {
-    title: "Matrix Code Generator",
-    description:
-        "Advanced code generation tool using GPT-4 integration with syntax highlighting and real-time collaboration features.",
-    tech: ["TypeScript", "OpenAI API", "Monaco Editor", "Redis"],
-    github: "#",
-    live: "#",
-    featured: false,
-    image: "/placeholder.svg?height=300&width=400",
-},
+    image: "/portfolio.png",
+}
 ]

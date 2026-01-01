@@ -29,7 +29,7 @@ export default function Projects({ isDarkMode }: ProjectsProps) {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -10 }}
-                            className={`group ${project.featured ? "lg:col-span-2" : ""}`}
+                            className={"group"}
                         >
                             <Card
                                 className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} hover:border-[#D62828]/50 transition-all duration-500 h-full overflow-hidden`}
@@ -37,7 +37,7 @@ export default function Projects({ isDarkMode }: ProjectsProps) {
                                 <CardContent className="p-0">
                                     <div className="relative overflow-hidden">
                                         <img
-                                            src={project.image || "/placeholder.svg"}
+                                            src={project.image || "/dashboard.png"}
                                             alt={project.title}
                                             className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                                         />
@@ -45,7 +45,7 @@ export default function Projects({ isDarkMode }: ProjectsProps) {
                                         {project.featured && (
                                             <div className="absolute top-4 right-4">
                                                 <span className="inline-block px-3 py-1 bg-gradient-to-r from-[#D62828] to-[#E76F51] text-white text-xs rounded-full">
-                                                    FEATURED
+                                                    Destaque
                                                 </span>
                                             </div>
                                         )}
@@ -61,24 +61,36 @@ export default function Projects({ isDarkMode }: ProjectsProps) {
                                             </div>
                                             <div className="flex space-x-3">
                                                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                                    <Button
-                                                        variant="outline"
-                                                        size="sm"
-                                                        className={`border-[#D62828] ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} hover:bg-[#D62828] hover:text-white transition-all duration-300`}
+                                                    <a
+                                                        href={project.github}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
                                                     >
-                                                        <Github className="w-4 h-4 mr-2" />
-                                                        Code
-                                                    </Button>
+                                                        <Button
+                                                            variant="outline"
+                                                            size="sm"
+                                                            className={`border-[#D62828] ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} hover:bg-[#D62828] hover:text-white transition-all duration-300`}
+                                                        >
+                                                            <Github className="w-4 h-4 mr-2" />
+                                                            Code
+                                                        </Button>
+                                                    </a>
                                                 </motion.div>
                                                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                                                    <Button
-                                                        variant="outline"
-                                                        size="sm"
-                                                        className={`border-[#D62828] ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} hover:bg-[#D62828] hover:text-white transition-all duration-300`}
+                                                    <a
+                                                        href={project.live}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
                                                     >
-                                                        <ExternalLink className="w-4 h-4 mr-2" />
-                                                        Live
-                                                    </Button>
+                                                        <Button
+                                                            variant="outline"
+                                                            size="sm"
+                                                            className={`border-[#D62828] ${isDarkMode ? "text-[#D62828]" : "text-[#D62828]"} hover:bg-[#D62828] hover:text-white transition-all duration-300`}
+                                                        >
+                                                            <ExternalLink className="w-4 h-4 mr-2" />
+                                                            Live
+                                                        </Button>
+                                                    </a>
                                                 </motion.div>
                                             </div>
                                         </div>
