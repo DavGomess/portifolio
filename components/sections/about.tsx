@@ -31,10 +31,10 @@ export default function About({ isDarkMode }: AboutProps) {
                             className={`${isDarkMode ? "bg-black/40" : "bg-[#FAFAFA]/40"} backdrop-blur-xl border ${isDarkMode ? "border-[#D62828]/30" : "border-[#2B2D42]/30"} rounded-2xl p-8`}
                         >
                             <p className={`text-xl ${isDarkMode ? "text-gray-300" : "text-[#444]"} leading-relaxed mb-6`}>
-                                Sou estudante de Análise e Desenvolvimento de Sistemas e desenvolvo projetos web práticos. Gosto de resolver problemas com lógica, aprender rápido e transformar ideias em soluções fáceis de usar. Busco oportunidade para aplicar e ampliar minhas habilidades.
+                                Sou Desenvolvedor Full Stack e desenvolvo aplicações web utilizando JavaScript e TypeScript. Tenho foco em construir soluções bem estruturadas, com atenção à lógica, organização do código e boas práticas de desenvolvimento.
                             </p>
                             <p className={`text-xl ${isDarkMode ? "text-gray-300" : "text-[#444]"} leading-relaxed mb-8`}>
-                                Atualmente concentro meus estudos em desenvolvimento web com foco em back-end, construindo soluções orientadas à resolução de problemas reais.
+                                Possuo experiência no desenvolvimento de aplicações web completas, incluindo interface do usuário, regras de negócio e integração com banco de dados. Atualmente, sigo aprimorando meus conhecimentos por meio de projetos práticos, buscando evoluir tecnicamente e aplicar o que aprendo em ambientes profissionais e colaborativos.
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                                 <motion.div
