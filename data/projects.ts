@@ -16,7 +16,7 @@ export const projects = [
         "Portfólio profissional desenvolvido para apresentar projetos, habilidades técnicas e informações de contato de forma clara e organizada. O foco está em uma experiência de navegação fluida, design responsivo e apresentação visual consistente.",
     tech: ["CSS", "TypeScript", "React", "Next.js", "Tailwind CSS"],
     github: "https://github.com/DavGomess/portifolio",
-    live: "https://portifolio-davgomess.vercel.app/",
+    live: "https://portfolio-davgomess.vercel.app/",
     featured: false,
     image: "/portfolio.png",
 }
